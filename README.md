@@ -1,3 +1,7 @@
+# Open on site
+
+[https://anilist-in.netlify.app/]
+
 # Getting Run Locally
 
 In the project directory, you must run:
