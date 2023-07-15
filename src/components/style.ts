@@ -1,6 +1,5 @@
 import { ChevronLeftOutlined } from "@mui/icons-material";
 import styled from "@emotion/styled";
-// import styled from "styled-components";
 import { mqGreater } from "../utils/media";
 
 const Styled = {

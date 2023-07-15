@@ -78,14 +78,14 @@ export const Styled = {
     }
 
     ${mqLess["screen414"]} {
-      max-width: 165px;
-      min-width: 165px;
+      max-width: 150px;
+      min-width: 150px;
       }
     }
 
     ${mqLess["screen375"]} {
-      max-width: 150px;
-      min-width: 150px;
+      max-width: 140px;
+      min-width: 140px;
     }
   `,
   ImgWrapper: styled.div`
