@@ -58,7 +58,6 @@ export const Styled = {
     padding: 12px 24px;
     position: relative;
     min-height: 40vh;
-    max-height: 45vh;
 
     p {
       margin: 5px 0;
