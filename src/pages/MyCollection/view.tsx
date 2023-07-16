@@ -40,7 +40,7 @@ const MyCollection: React.FC = () => {
                   <Card
                     subtitle={String(val.id)}
                     url={val.image}
-                    name={upperFirst(val.collectionName)}
+                    name={val.collectionName}
                     key={i}
                     onClick={() => navigate(`/anime/${val.id}/collection`)}
                     colorType={val.genres[0] || "unknown"}

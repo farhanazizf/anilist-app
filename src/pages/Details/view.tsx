@@ -3,14 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { CircularProgress, Skeleton } from "@mui/material";
 import GlobalContext from "../../context/global-context";
 import { useDetailAnime } from "./service";
-import {
-  Styled,
-  // ModalChoice,
-  ModalConfirm,
-  InfoLabel,
-  LongBox,
-  ModalNaming,
-} from "./style";
+import { Styled, ModalConfirm, InfoLabel, LongBox, ModalNaming } from "./style";
 import BasicTabs, { TabPanel } from "../../components/tabs";
 import { IConfirm, Month, initialTab } from "./types";
 import FabChildren from "../../components/fab-children";
@@ -77,18 +70,26 @@ const Detail: React.FC = () => {
     e.preventDefault();
 
     if (anime) {
-      onSelectCollection({
-        id: anime?.id,
-        genres: anime?.genres,
-        image: anime.coverImage.extraLarge,
-        title: anime.title,
-        collectionName: name,
-      });
+      const isUnique = collections.every((val) => val.collectionName !== name);
 
-      setModal({ ...initialModal });
+      if (isUnique) {
+        onSelectCollection({
+          id: anime?.id,
+          genres: anime?.genres,
+          image: anime.coverImage.extraLarge,
+          title: anime.title,
+          collectionName: name,
+        });
 
-      setToast({ message: "Success add collection!" });
-      navigate(`/my-collection`);
+        setModal({ ...initialModal });
+
+        setToast({ message: "Success add collection!" });
+        navigate(`/my-collection`);
+      } else {
+        setTimeout(() => {
+          setModal({ ...modal, visible: true, success: false });
+        }, 350);
+      }
     }
   };
 
@@ -134,9 +135,10 @@ const Detail: React.FC = () => {
 
       <ModalNaming
         visible={modal.visible}
+        success={modal.success}
         processing={loading}
         onDismiss={() => setModal({ ...modal, visible: false })}
-        onSubmit={(e, nick: string) => addToCollection(e, nick)}
+        onSubmit={(e, name: string) => addToCollection(e, name)}
       />
 
       <Styled.SectionDetails>
@@ -159,13 +161,6 @@ const Detail: React.FC = () => {
               {myCollection.length > 0 ? (
                 <div className="ownedWrap">
                   <p className="quantity">ADDED</p>
-                  {/* <p className="quantity">
-                    {id
-                      ? collections.filter(
-                          (val) => val.title.romaji === anime?.title.romaji
-                        ).length
-                      : myCollection.length}
-                  </p> */}
                 </div>
               ) : null}
             </Styled.HeadWrap>

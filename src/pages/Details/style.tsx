@@ -509,6 +509,7 @@ export const ModalNaming: React.FC<IModals> = ({
   visible,
   processing,
   type,
+  success,
   onDismiss,
   onSubmit,
 }) => {
@@ -526,7 +527,7 @@ export const ModalNaming: React.FC<IModals> = ({
         {!processing ? (
           <React.Fragment>
             <div className="messageWrapper">
-              <WarningAmberOutlined className="success" />
+              <WarningAmberOutlined color={success ? "warning" : "error"} />
 
               <p className="message">
                 Please add name of this anime for your collection.
@@ -543,6 +544,12 @@ export const ModalNaming: React.FC<IModals> = ({
                 required
                 autoComplete="off"
                 inputProps={{ maxLength: 10 }}
+                error={!success && name === ""}
+                helperText={
+                  !success && name === ""
+                    ? "Name already used, please choose another name"
+                    : ""
+                }
               />
 
               <Styled.ButtonWrapper>

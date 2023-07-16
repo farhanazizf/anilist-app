@@ -83,6 +83,7 @@ export interface IColor {
 export interface IModals {
   visible: boolean;
   processing: boolean;
+  success: boolean;
   onDismiss: () => void;
   onSubmit: (event: React.FormEvent<HTMLFormElement>, nickname: string) => void;
   type?: string;
