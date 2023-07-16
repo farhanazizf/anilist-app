@@ -77,8 +77,8 @@ export const Styled = {
       }
     }
 
-    ${mqLess["sm"]} {
-      max-width: 150px;
+    ${mqLess["md"]} {
+      max-width: 155px;
       min-width: 140px;
     }
 
