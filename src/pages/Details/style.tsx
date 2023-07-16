@@ -57,7 +57,8 @@ export const Styled = {
   AvatarWrapper: styled.div`
     padding: 12px 24px;
     position: relative;
-    min-height: 40vh;
+    min-height: 45vh;
+    max-height: 60vh;
 
     p {
       margin: 5px 0;
@@ -65,7 +66,7 @@ export const Styled = {
     img.bannerImg {
       border-radius: 12px;
       width: 45%;
-      height: fit-content;
+      // height: fit-content;
     }
   `,
   HeadWrap: styled.div`

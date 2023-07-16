@@ -49,8 +49,8 @@ export const Styled = {
     max-height: 200px;
     overflow: hidden;
 
-    max-width: 14rem;
-    min-width: 14rem;
+    max-width: 13.5rem;
+    min-width: 13.5rem;
 
     div.ownedWrap {
       background: white;
@@ -77,13 +77,18 @@ export const Styled = {
       }
     }
 
+    ${mqLess["sm"]} {
+      max-width: 150px;
+      min-width: 140px;
+    }
+
     ${mqLess["screen414"]} {
       max-width: 150px;
-      min-width: 150px;
-      }
+      min-width: 140px;
     }
 
     ${mqLess["screen375"]} {
+      background: red;
       max-width: 140px;
       min-width: 140px;
     }
