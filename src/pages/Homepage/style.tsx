@@ -88,7 +88,6 @@ export const Styled = {
     }
 
     ${mqLess["screen375"]} {
-      background: red;
       max-width: 140px;
       min-width: 140px;
     }
