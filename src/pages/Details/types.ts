@@ -86,7 +86,7 @@ export interface IModals {
   success: boolean;
   onDismiss: () => void;
   onSubmit: (event: React.FormEvent<HTMLFormElement>, nickname: string) => void;
-  type?: string;
+  errorMsg?: string;
 }
 
 export interface IModalChoice {

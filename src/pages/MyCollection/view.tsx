@@ -13,10 +13,6 @@ const MyCollection: React.FC = () => {
   const { collections } = React.useContext(GlobalContext);
   const [loading, setLoading] = React.useState(true);
 
-  const upperFirst = (word: string) => {
-    return word.charAt(0).toUpperCase() + word.slice(1);
-  };
-
   React.useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
 

@@ -508,7 +508,7 @@ export const AnimationLoading: React.FC<{ type?: string }> = ({ type }) => {
 export const ModalNaming: React.FC<IModals> = ({
   visible,
   processing,
-  type,
+  errorMsg,
   success,
   onDismiss,
   onSubmit,
@@ -545,11 +545,7 @@ export const ModalNaming: React.FC<IModals> = ({
                 autoComplete="off"
                 inputProps={{ maxLength: 10 }}
                 error={!success && name === ""}
-                helperText={
-                  !success && name === ""
-                    ? "Name already used, please choose another name"
-                    : ""
-                }
+                helperText={!success && name === "" ? errorMsg : ""}
               />
 
               <Styled.ButtonWrapper>
@@ -560,7 +556,7 @@ export const ModalNaming: React.FC<IModals> = ({
             </form>
           </React.Fragment>
         ) : (
-          <AnimationLoading type={type || "unknown"} />
+          <AnimationLoading type={"unknown"} />
         )}
       </Styled.ModalWrapper>
     </Modals>

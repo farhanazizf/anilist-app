@@ -39,6 +39,7 @@ const Detail: React.FC = () => {
     id: 0,
     collectionName: "",
   });
+  const [errorMsg, setErrorMsg] = React.useState("");
 
   const myCollection = collection
     ? collections.filter((val) => val.id === parseInt(id || "0"))
@@ -71,8 +72,11 @@ const Detail: React.FC = () => {
 
     if (anime) {
       const isUnique = collections.every((val) => val.collectionName !== name);
+      const isNoSpecialCharacter = !name.match(/[^a-zA-Z0-9]/);
 
-      if (isUnique) {
+      if (isUnique && isNoSpecialCharacter) {
+        setErrorMsg("");
+
         onSelectCollection({
           id: anime?.id,
           genres: anime?.genres,
@@ -86,6 +90,11 @@ const Detail: React.FC = () => {
         setToast({ message: "Success add collection!" });
         navigate(`/my-collection`);
       } else {
+        setErrorMsg(
+          !isNoSpecialCharacter
+            ? "Special characters not allowed!"
+            : "Name already used, please choose another name"
+        );
         setTimeout(() => {
           setModal({ ...modal, visible: true, success: false });
         }, 350);
@@ -137,6 +146,7 @@ const Detail: React.FC = () => {
         visible={modal.visible}
         success={modal.success}
         processing={loading}
+        errorMsg={errorMsg}
         onDismiss={() => setModal({ ...modal, visible: false })}
         onSubmit={(e, name: string) => addToCollection(e, name)}
       />
